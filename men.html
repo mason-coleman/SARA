@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="SARA men, men's clothing, minimalist menswear, trousers, jackets">
+  <meta name="description" content="Discover the SARA men's clothing collection featuring modern silhouettes and timeless design.">
+  <title>SARA | Men</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <button class="burger" id="burgerBtn" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <a href="home.html" class="header-logo">SARA</a>
+
+  <a href="cart.html" class="cart-link" aria-label="Shopping cart">SHOPPING CART</a>
+
+  <div class="menu" id="menu" aria-hidden="true">
+    <div class="menu-panel">
+      <div class="menu-logo">SARA</div>
+
+      <nav class="menu-links">
+        <a href="home.html">HOME</a>
+        <a href="women.html">WOMEN</a>
+        <a href="men.html">MEN</a>
+        <a href="about.html">ABOUT</a>
+        <a href="contact.html">CONTACT</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="shop">
+    <div class="shop-inner">
+      <h1 class="shop-title">MEN</h1>
+
+      <section class="shop-row">
+        <h2 class="shop-row-title">NEW ARRIVALS</h2>
+        <div class="shop-scroller" id="new-arrivals-row"></div>
+      </section>
+
+      <section class="shop-row">
+        <h2 class="shop-row-title">JACKETS</h2>
+        <div class="shop-scroller" id="jackets-row"></div>
+      </section>
+
+      <section class="shop-row">
+        <h2 class="shop-row-title">SHIRTS</h2>
+        <div class="shop-scroller" id="shirts-row"></div>
+      </section>
+
+      <section class="shop-row">
+        <h2 class="shop-row-title">PANTS</h2>
+        <div class="shop-scroller" id="pants-row"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <a class="footer-logo" href="home.html">SARA</a>
+
+    <div class="footer-links">
+      <a href="./about.html">About</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./faq.html">FAQ</a>
+    </div>
+
+    <p class="footer-copy">© 2026 SARA. All rights reserved.</p>
+  </footer>
+
+<script>
+const burgerBtn = document.getElementById("burgerBtn");
+const menu = document.getElementById("menu");
+
+burgerBtn.addEventListener("click", () => {
+  menu.classList.toggle("open");
+});
+
+menu.addEventListener("click", (e) => {
+  if (e.target === menu) menu.classList.remove("open");
+});
+
+const rowMap = {
+  "NEW ARRIVALS": document.getElementById("new-arrivals-row"),
+  "JACKETS": document.getElementById("jackets-row"),
+  "SHIRTS": document.getElementById("shirts-row"),
+  "PANTS": document.getElementById("pants-row")
+};
+
+function createProductCard(product) {
+  const card = document.createElement("article");
+  card.className = "prod-card";
+
+  card.innerHTML = `
+    <div class="prod-image-wrap">
+      <img class="prod-image" src="${product.image}" alt="${product.name}" draggable="false">
+    </div>
+    <div class="prod-info">
+      <h3 class="prod-name">${product.name}</h3>
+      <p class="prod-description">${product.description}</p>
+      <p class="prod-price">${product.price}</p>
+    </div>
+  `;
+
+  const img = card.querySelector("img");
+  img.addEventListener("dragstart", (e) => {
+    e.preventDefault();
+  });
+
+  return card;
+}
+
+fetch("catalogs/catalog-men.json")
+  .then((response) => response.json())
+  .then((products) => {
+    const repeatedProducts = [];
+
+    for (let i = 0; i < 6; i++) {
+      repeatedProducts.push(...products);
+    }
+
+    repeatedProducts.forEach((product) => {
+      const row = rowMap[product.category];
+      if (row) {
+        row.appendChild(createProductCard(product));
+      }
+    });
+
+    enableDragScroll();
+  })
+  .catch((error) => {
+    console.error("Could not load catalog-men.json:", error);
+  });
+
+function enableDragScroll() {
+  document.querySelectorAll(".shop-scroller").forEach((scroller) => {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    scroller.addEventListener("mousedown", (e) => {
+      isDown = true;
+      scroller.classList.add("dragging");
+      startX = e.pageX - scroller.offsetLeft;
+      scrollLeft = scroller.scrollLeft;
+    });
+
+    window.addEventListener("mouseup", () => {
+      isDown = false;
+      scroller.classList.remove("dragging");
+    });
+
+    scroller.addEventListener("mouseleave", () => {
+      isDown = false;
+      scroller.classList.remove("dragging");
+    });
+
+    scroller.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - scroller.offsetLeft;
+      const walk = (x - startX) * 1.2;
+      scroller.scrollLeft = scrollLeft - walk;
+    });
+  });
+}
+</script>
+
+</body>
+</html>

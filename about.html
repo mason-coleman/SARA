@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="about SARA, fashion brand story, minimalist clothing brand">
+<meta name="description" content="Learn about the vision and philosophy behind SARA.">
+<title>SARA | About</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <header class="nav">
+    <button class="burger" id="burgerBtn" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <a href="home.html" class="header-logo">SARA</a>
+
+<div class="menu" id="menu" aria-hidden="true">
+<div class="menu-panel">
+
+<div class="menu-logo">SARA</div>
+
+<nav class="menu-links">
+<a href="home.html">HOME</a>
+<a href="women.html">WOMEN</a>
+<a href="men.html">MEN</a>
+<a href="about.html">ABOUT</a>
+<a href="contact.html">CONTACT</a>
+<a href="faq.html">FAQ</a>
+</nav>
+
+</div>
+</div>
+
+<main class="about">
+
+<section class="about-hero">
+<h1>ABOUT SARA</h1>
+</section>
+
+<section class="about-content">
+
+<p>
+SARA was founded with a simple idea: clothing should feel effortless.
+We focus on clean design, strong materials, and pieces that can be worn
+again and again. Our collections are built around timeless silhouettes
+rather than fast trends.
+</p>
+
+<p>
+Each season we refine our designs to make them simpler, more comfortable,
+and more durable. The goal is not to create more clothing, but to create
+better clothing.
+</p>
+
+<p>
+We work with a small network of manufacturers who prioritize quality and
+responsible production. Every garment is designed to fit naturally into
+daily life, whether that means work, travel, or time away from the city.
+</p>
+
+<p>
+SARA believes that style should not be complicated. A few well-made
+pieces are often enough.
+</p>
+
+</section>
+
+</main>
+
+<footer class="footer">
+
+<a class="footer-logo" href="home.html">SARA</a>
+
+<div class="footer-links">
+<a href="./about.html">About</a>
+<a href="./contact.html">Contact</a>
+<a href="./faq.html">FAQ</a>
+</div>
+
+<p class="footer-copy">© 2026 SARA. All rights reserved.</p>
+
+</footer>
+
+<script>
+const burgerBtn = document.getElementById("burgerBtn");
+const menu = document.getElementById("menu");
+
+burgerBtn.addEventListener("click", () => {
+menu.classList.toggle("open");
+});
+
+menu.addEventListener("click", (e) => {
+if (e.target === menu) menu.classList.remove("open");
+});
+</script>
+
+</body>
+</html>

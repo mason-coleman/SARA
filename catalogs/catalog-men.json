@@ -1,0 +1,37 @@
+[
+  {
+    "category": "NEW ARRIVALS",
+    "name": "Textured Overshirt",
+    "description": "Relaxed fit overshirt in a structured cotton blend.",
+    "image": "images/men/textured-overshirt.png",
+    "price": "$29.99" 
+  },
+  {
+    "category": "NEW ARRIVALS",
+    "name": "Straight Leg Trousers",
+    "description": "Minimal straight-leg trousers with a clean finish.",
+    "image": "images/men/straight-trousers.png",
+    "price": "$34.99"
+  },
+  {
+    "category": "JACKETS",
+    "name": "Wool Blend Jacket",
+    "description": "Tailored jacket with a soft wool texture.",
+    "image": "images/men/wool-jacket.png",
+    "price": "$36.99"
+  },
+  {
+    "category": "SHIRTS",
+    "name": "Poplin Shirt",
+    "description": "Classic poplin shirt designed for everyday wear.",
+    "image": "images/men/poplin-shirt.png",
+    "price": "$36.99"
+  },
+  {
+    "category": "PANTS",
+    "name": "Wide Fit Pants",
+    "description": "Wide-leg pants with a fluid drape and modern silhouette.",
+    "image": "images/men/wide-pants.png",
+    "price": "$42.99"
+  }
+]

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="SARA FAQ, fashion store help, shipping, returns">
+  <meta name="description" content="Frequently asked questions about SARA products, shipping, and returns.">
+  <title>SARA | FAQ</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<style>
+    .faq-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 90px 8vw 80px;
+}
+
+.faq-hero {
+  margin-bottom: 50px;
+}
+
+.faq-title {
+  font-size: 90px;
+  letter-spacing: 0.18em;
+  font-weight: normal;
+  margin: 0 0 18px;
+}
+
+.faq-intro {
+  max-width: 520px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.faq-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #ddd;
+}
+
+.faq-item {
+  border-bottom: 1px solid #ddd;
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 22px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  font-family: inherit;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.faq-symbol {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+
+.faq-answer p {
+  margin: 0 0 22px;
+  color: #555;
+  line-height: 1.7;
+  max-width: 650px;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 200px;
+}
+
+.faq-item.active .faq-symbol {
+  content: "-";
+}
+
+@media (max-width: 700px) {
+  .faq-page {
+    padding: 70px 8vw 60px;
+  }
+
+  .faq-title {
+    font-size: 52px;
+  }
+
+  .faq-question {
+    font-size: 16px;
+  }
+}
+</style>
+<body>
+
+  <header class="nav">
+    <button class="burger" id="burgerBtn" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <a href="home.html" class="header-logo">SARA</a>
+  
+  <div class="menu" id="menu" aria-hidden="true">
+    <div class="menu-panel">
+      <div class="menu-logo">SARA</div>
+
+      <nav class="menu-links">
+        <a href="home.html">HOME</a>
+        <a href="women.html">WOMEN</a>
+        <a href="men.html">MEN</a>
+        <a href="about.html">ABOUT</a>
+        <a href="contact.html">CONTACT</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="faq-page">
+    <section class="faq-hero">
+      <h1 class="faq-title">FAQ</h1>
+      <p class="faq-intro">
+        Find quick answers about shipping, returns, sizing, and orders.
+      </p>
+    </section>
+
+    <ul class="faq-list">
+
+    <li class="faq-item">
+        <button class="faq-question">
+        <span>What is SARA?</span>
+        <span class="faq-symbol">+</span>
+        </button>
+
+        <div class="faq-answer">
+        <p>
+            SARA is a minimalist fashion concept focused on clean silhouettes,
+            neutral palettes, and timeless garments designed for everyday wear.
+        </p>
+        </div>
+    </li>
+
+    <li class="faq-item">
+        <button class="faq-question">
+        <span>Do you ship internationally?</span>
+        <span class="faq-symbol">+</span>
+        </button>
+
+        <div class="faq-answer">
+        <p>
+            Yes. We ship to most regions worldwide. Shipping times vary depending
+            on the destination and the chosen shipping method.
+        </p>
+        </div>
+    </li>
+
+    <li class="faq-item">
+        <button class="faq-question">
+        <span>What is the return policy?</span>
+        <span class="faq-symbol">+</span>
+        </button>
+
+        <div class="faq-answer">
+        <p>
+            Items can be returned within 30 days of purchase as long as they are
+            unworn and in their original condition.
+        </p>
+        </div>
+    </li>
+
+    <li class="faq-item">
+        <button class="faq-question">
+        <span>How can I contact customer support?</span>
+        <span class="faq-symbol">+</span>
+        </button>
+
+        <div class="faq-answer">
+        <p>
+            You can reach us through the contact form on the contact page and our
+            team will respond within 24 hours.
+        </p>
+        </div>
+    </li>
+
+    </ul>
+  </main>
+
+  <footer class="footer">
+    <a class="footer-logo" href="home.html">SARA</a>
+
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+
+    <p class="footer-copy">© 2026 SARA. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const burgerBtn = document.getElementById("burgerBtn");
+    const menu = document.getElementById("menu");
+
+    burgerBtn.addEventListener("click", () => {
+      menu.classList.toggle("open");
+    });
+
+    menu.addEventListener("click", (e) => {
+      if (e.target === menu) menu.classList.remove("open");
+    });
+
+    const faqQuestions = document.querySelectorAll(".faq-question");
+
+    faqQuestions.forEach((question) => {
+      question.addEventListener("click", () => {
+        const item = question.parentElement;
+        item.classList.toggle("active");
+      });
+    });
+  </script>
+</body>
+</html>

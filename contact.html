@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="SARA contact, customer support, fashion brand contact">
+<meta name="description" content="Contact the SARA team for support or questions about our collections.">
+<title>SARA | Contact</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <header class="nav">
+    <button class="burger" id="burgerBtn" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <a href="home.html" class="header-logo">SARA</a>
+
+<div class="menu" id="menu" aria-hidden="true">
+<div class="menu-panel">
+
+<div class="menu-logo">SARA</div>
+
+<nav class="menu-links">
+<a href="home.html">HOME</a>
+<a href="women.html">WOMEN</a>
+<a href="men.html">MEN</a>
+<a href="about.html">ABOUT</a>
+<a href="contact.html">CONTACT</a>
+<a href="faq.html">FAQ</a>
+</nav>
+
+</div>
+</div>
+
+<main class="contact">
+
+<h1 class="contact-title">CONTACT US</h1>
+
+<p class="contact-intro">
+If you have any questions about our collections, orders, or partnerships,
+feel free to reach out using the form below.
+</p>
+
+<form class="contact-form" id="contactForm" novalidate>
+  <label>
+    NAME
+    <input type="text" id="name" name="name">
+    <span class="form-error" id="nameError"></span>
+  </label>
+
+  <label>
+    EMAIL
+    <input type="email" id="email" name="email">
+    <span class="form-error" id="emailError"></span>
+  </label>
+
+  <label>
+    MESSAGE
+    <textarea id="message" name="message" rows="5"></textarea>
+    <span class="form-error" id="messageError"></span>
+  </label>
+
+  <button type="submit">SEND MESSAGE</button>
+</form>
+
+<div class="thank-you-popup" id="thankYouPopup">
+  <div class="thank-you-box">
+    <p>Thank you. Your message has been submitted.</p>
+    <button type="button" id="closePopup">CLOSE</button>
+  </div>
+</div>
+
+</main>
+
+<footer class="footer">
+
+<a class="footer-logo" href="home.html">SARA</a>
+
+<div class="footer-links">
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="faq.html">FAQ</a>
+</div>
+
+<p class="footer-copy">© 2026 SARA. All rights reserved.</p>
+
+</footer>
+
+<script>
+const burgerBtn = document.getElementById("burgerBtn");
+const menu = document.getElementById("menu");
+
+burgerBtn.addEventListener("click", () => {
+  menu.classList.toggle("open");
+});
+
+menu.addEventListener("click", (e) => {
+  if (e.target === menu) menu.classList.remove("open");
+});
+
+const contactForm = document.getElementById("contactForm");
+const thankYouPopup = document.getElementById("thankYouPopup");
+const closePopup = document.getElementById("closePopup");
+
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const messageInput = document.getElementById("message");
+
+const nameError = document.getElementById("nameError");
+const emailError = document.getElementById("emailError");
+const messageError = document.getElementById("messageError");
+
+function clearErrors() {
+  nameError.textContent = "";
+  emailError.textContent = "";
+  messageError.textContent = "";
+
+  nameInput.classList.remove("input-error");
+  emailInput.classList.remove("input-error");
+  messageInput.classList.remove("input-error");
+}
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function validateForm() {
+  clearErrors();
+  let isValid = true;
+
+  if (nameInput.value.trim().length < 2) {
+    nameError.textContent = "Please enter a valid name.";
+    nameInput.classList.add("input-error");
+    isValid = false;
+  }
+
+  if (!isValidEmail(emailInput.value.trim())) {
+    emailError.textContent = "Please enter a valid email address.";
+    emailInput.classList.add("input-error");
+    isValid = false;
+  }
+
+  if (messageInput.value.trim().length < 10) {
+    messageError.textContent = "Message must be at least 10 characters.";
+    messageInput.classList.add("input-error");
+    isValid = false;
+  }
+
+  return isValid;
+}
+
+contactForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  if (validateForm()) {
+    thankYouPopup.classList.add("show");
+    contactForm.reset();
+  }
+});
+
+closePopup.addEventListener("click", () => {
+  thankYouPopup.classList.remove("show");
+});
+
+thankYouPopup.addEventListener("click", (e) => {
+  if (e.target === thankYouPopup) {
+    thankYouPopup.classList.remove("show");
+  }
+});
+</script>
+
+</body>
+</html>

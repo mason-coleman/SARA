@@ -1,0 +1,30 @@
+[
+  {
+    "category": "NEW ARRIVALS",
+    "name": "Flowing Shirt",
+    "description": "Lightweight relaxed shirt with a clean silhouette.",
+    "image": "images/women/flowing-shirt.png",
+    "price": "$29.99"    
+  },
+  {
+    "category": "JACKETS",
+    "name": "Short Wool Jacket",
+    "description": "Structured wool-blend jacket with a minimal finish.",
+    "image": "images/women/short-wool-jacket.png",
+    "price": "$34.99"
+  },
+  {
+    "category": "TOPS",
+    "name": "Ribbed Knit Top",
+    "description": "Soft fitted knit top for everyday wear.",
+    "image": "images/women/ribbed-knit-top.png",
+    "price": "$36.99"
+  },
+  {
+    "category": "PANTS",
+    "name": "Wide Leg Trousers",
+    "description": "Relaxed high-waist trousers with fluid movement.",
+    "image": "images/women/wide-leg-pants.png",
+    "price": "$42.99"
+  }
+]
